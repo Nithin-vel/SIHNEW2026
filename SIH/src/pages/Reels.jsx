@@ -26,15 +26,23 @@ export const Reels = () => {
     <div className="reels-container">
       {reelIds.map((id, index) => (
         <div key={id} className="reel-item">
-          <iframe 
-            className="reel-iframe"
-            src={`https://www.instagram.com/p/${id}/embed/captioned`}
-            frameBorder="0"
-            scrolling="no"
-            allowTransparency="true"
-            allowFullScreen={true}
-            title={`Instagram Reel ${index + 1}`}
-          />
+          <div className="reel-iframe-wrapper">
+            {/* Top black overlay to hide Instagram header */}
+            <div className="reel-overlay-top"></div>
+            
+            <iframe 
+              className="reel-iframe"
+              src={`https://www.instagram.com/p/${id}/embed/?theme=dark`}
+              frameBorder="0"
+              scrolling="no"
+              allowTransparency="true"
+              allowFullScreen={true}
+              title={`Instagram Reel ${index + 1}`}
+            />
+            
+            {/* Bottom black overlay to hide Instagram footer */}
+            <div className="reel-overlay-bottom"></div>
+          </div>
         </div>
       ))}
     </div>

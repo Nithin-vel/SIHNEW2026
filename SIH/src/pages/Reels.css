@@ -25,15 +25,47 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  background-color: #111;
+  background-color: #000;
+}
+
+.reel-iframe-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  height: 100%;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .reel-iframe {
   width: 100%;
-  max-width: 450px;
   height: 100%;
   border: none;
   background-color: #000;
+}
+
+.reel-overlay-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px; /* Adjust to cover the header */
+  background-color: #000;
+  z-index: 10;
+  pointer-events: none; /* Let clicks pass through if needed */
+}
+
+.reel-overlay-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px; /* Adjust to cover the footer */
+  background-color: #000;
+  z-index: 10;
+  pointer-events: none;
 }
 
 /* On desktop, make it look like a mobile phone frame in the center */
