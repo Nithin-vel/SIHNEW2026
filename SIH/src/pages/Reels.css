@@ -51,7 +51,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 60px; /* Adjust to cover the header */
+  height: 70px; /* Increased to cover header completely */
   background-color: #000;
   z-index: 10;
   pointer-events: none; /* Let clicks pass through if needed */
@@ -62,10 +62,30 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 140px; /* Increased to fully hide "View more on Instagram" box */
+  height: 220px; /* Drastically increased to fully swallow the View More box and white lines */
   background-color: #000;
   z-index: 10;
   pointer-events: none;
+}
+
+/* Side overlays to hide the 1px white border of the Instagram embed */
+.reel-overlay-left,
+.reel-overlay-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #000;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.reel-overlay-left {
+  left: 0;
+}
+
+.reel-overlay-right {
+  right: 0;
 }
 
 /* Custom Native UI Overlay */

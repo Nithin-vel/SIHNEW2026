@@ -60,6 +60,10 @@ export const Reels = () => {
             
             {/* Bottom black overlay to hide Instagram footer */}
             <div className="reel-overlay-bottom"></div>
+            
+            {/* Edge overlays to hide iframe internal 1px borders */}
+            <div className="reel-overlay-left"></div>
+            <div className="reel-overlay-right"></div>
 
             {/* Custom Native-like UI Overlay */}
             <div className="custom-reel-ui">
