@@ -59,17 +59,7 @@ export const Sidebar = () => {
         </button>
       </div>
 
-      {/* Mode Indicator / Switcher for SIH Jury */}
-      <div className="sih-evaluator-badge">
-        <span className="sih-tag">SIH 2026 Prototype</span>
-        <button 
-          onClick={toggleRole}
-          className={`role-switch-btn ${isAdmin ? 'role-admin' : 'role-farmer'}`}
-          title="Switch view to test Admin Dashboard"
-        >
-          {isAdmin ? `🛡️ ${t('admin_view')}` : `🌾 ${t('farmer_view')}`}
-        </button>
-      </div>
+
 
       {/* Navigation Links */}
       <nav className="sidebar-nav">

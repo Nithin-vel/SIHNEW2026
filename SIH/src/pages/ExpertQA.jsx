@@ -16,6 +16,7 @@ import { useAppState } from '../context/AppStateContext';
 import { useAuth } from '../context/AuthContext';
 import { cropsList } from '../data/mockData';
 import { Modal } from '../components/common/Modal';
+import { FarmingChatbot } from '../components/chatbot/FarmingChatbot';
 
 export const ExpertQA = () => {
   const { user } = useAuth();
@@ -79,12 +80,15 @@ export const ExpertQA = () => {
           </p>
         </div>
 
-        <button 
-          onClick={() => setIsAskModalOpen(true)}
-          className="btn btn-primary"
-        >
-          <PlusCircle size={18} /> Ask a Farming Question
-        </button>
+        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+          <FarmingChatbot />
+          <button 
+            onClick={() => setIsAskModalOpen(true)}
+            className="btn btn-primary"
+          >
+            <PlusCircle size={18} /> Ask a Farming Question
+          </button>
+        </div>
       </div>
 
       {/* Filter and Search */}

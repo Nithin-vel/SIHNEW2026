@@ -39,6 +39,7 @@ import { ReelCard } from '../components/feed/ReelCard';
 import { CreatePostModal } from '../components/feed/CreatePostModal';
 import { CommentModal } from '../components/feed/CommentModal';
 import { Modal } from '../components/common/Modal';
+import { SoilTestCenters } from '../components/feed/SoilTestCenters';
 
 export const Home = () => {
   const { user } = useAuth();
@@ -291,6 +292,12 @@ export const Home = () => {
             >
               🎬 Reels ({reels.length})
             </button>
+            <button 
+              onClick={() => setFeedFilter('soil-tests')}
+              className={`feed-tab-btn ${feedFilter === 'soil-tests' ? 'active' : ''}`}
+            >
+              🧪 Soil Test Centers
+            </button>
           </div>
         </div>
 
@@ -352,6 +359,9 @@ export const Home = () => {
                 </div>
               ))}
             </div>
+          ) : feedFilter === 'soil-tests' ? (
+            /* Soil Test Centers View */
+            <SoilTestCenters userDistrict={user.district} userState={user.state} />
           ) : (
             /* Regular Feed Posts */
             <div className="feed-posts-column">

@@ -2,10 +2,6 @@
 
 /* Floating Launcher Button */
 .farming-chatbot-launcher {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 1000;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -71,17 +67,19 @@
 /* Chat Window Modal */
 .farming-chatbot-window {
   position: fixed;
-  bottom: 88px;
-  right: 24px;
-  width: 380px;
-  max-width: calc(100vw - 32px);
-  height: 580px;
-  max-height: calc(100vh - 120px);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
   background-color: #ffffff;
-  border-radius: var(--radius-xl, 22px);
-  box-shadow: var(--shadow-xl, 0 20px 30px -5px rgba(0, 0, 0, 0.15));
-  border: 1px solid var(--slate-200, #e2e8f0);
-  z-index: 1000;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -386,17 +384,7 @@
 
 /* Responsive adjustments */
 @media (max-width: 640px) {
-  .farming-chatbot-window {
-    right: 12px;
-    left: 12px;
-    width: auto;
-    bottom: 80px;
-    height: calc(100vh - 100px);
-  }
-
   .farming-chatbot-launcher {
-    bottom: 16px;
-    right: 16px;
     padding: 10px 16px;
     font-size: 0.88rem;
   }

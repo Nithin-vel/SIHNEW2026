@@ -15,13 +15,13 @@ const languages = [
 ];
 
 const cropImages = {
-  Paddy: 'https://images.unsplash.com/photo-1590080649774-67f7ff72a71d?w=200&h=200&fit=crop&q=80',
+  Paddy: 'https://images.unsplash.com/photo-1595861783060-f46399c23315?w=200&h=200&fit=crop&q=80',
   Tomato: 'https://images.unsplash.com/photo-1592841200221-a6898f307baa?w=200&h=200&fit=crop&q=80',
   Groundnut: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=200&h=200&fit=crop&q=80',
   Sugarcane: 'https://images.unsplash.com/photo-1527842891421-42eec6e703ea?w=200&h=200&fit=crop&q=80',
-  Cotton: 'https://images.unsplash.com/photo-1589926830501-c88c7f99d99c?w=200&h=200&fit=crop&q=80',
+  Cotton: 'https://images.unsplash.com/photo-1600863920958-e4215444b0f9?w=200&h=200&fit=crop&q=80',
   Banana: 'https://images.unsplash.com/photo-1528825871115-3581a5387919?w=200&h=200&fit=crop&q=80',
-  Maize: 'https://images.unsplash.com/photo-1629853965576-0f81d1efd752?w=200&h=200&fit=crop&q=80',
+  Maize: 'https://images.unsplash.com/photo-1555562093-f4c0ce3b7a54?w=200&h=200&fit=crop&q=80',
   Turmeric: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=200&h=200&fit=crop&q=80'
 };
 
@@ -82,12 +82,11 @@ const stateIcons = {
 const defaultStateIcon = '🗺️';
 
 const soilImages = {
-  'Alluvial Soil': 'https://images.unsplash.com/photo-1574895085449-74e5088c2271?w=200&h=200&fit=crop',
-  'Black Soil': 'https://images.unsplash.com/photo-1580211155981-d249f3984d7f?w=200&h=200&fit=crop',
-  'Red Soil': 'https://images.unsplash.com/photo-1518534063533-317112025350?w=200&h=200&fit=crop',
-  'Laterite Soil': 'https://images.unsplash.com/photo-1463130456064-9273c660f7e4?w=200&h=200&fit=crop',
-  'Desert Soil': 'https://images.unsplash.com/photo-1511690078903-71dc5a49f5e3?w=200&h=200&fit=crop',
-  'Mountain Soil': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=200&h=200&fit=crop'
+  'Red Loam': 'https://images.unsplash.com/photo-1518534063533-317112025350?w=200&h=200&fit=crop',
+  'Clayey Alluvial': 'https://images.unsplash.com/photo-1574895085449-74e5088c2271?w=200&h=200&fit=crop',
+  'Black Cotton Soil (Regur)': 'https://images.unsplash.com/photo-1580211155981-d249f3984d7f?w=200&h=200&fit=crop',
+  'Sandy Loam': 'https://images.unsplash.com/photo-1511690078903-71dc5a49f5e3?w=200&h=200&fit=crop',
+  'Laterite Soil': 'https://images.unsplash.com/photo-1463130456064-9273c660f7e4?w=200&h=200&fit=crop'
 };
 
 export const Register = ({ onSwitchToLogin }) => {
@@ -174,72 +173,10 @@ export const Register = ({ onSwitchToLogin }) => {
 
         <form onSubmit={handleNext} className="auth-form-3d">
           
-          {/* STEP 1: Basic Info */}
+          {/* STEP 1: Language */}
           {step === 1 && (
             <div className="animate-fade-in">
-              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '20px', color: '#0f172a' }}>1. Basic Information</h2>
-              <div className="form-group-3d">
-                <label className="form-label">{t('full_name')} *</label>
-                <div style={{ position: 'relative' }}>
-                  <User size={18} style={{ position: 'absolute', left: '12px', top: '12px', color: '#64748b' }} />
-                  <input 
-                    type="text" 
-                    className="form-input-3d" 
-                    placeholder="e.g., Ramasamy K." 
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    style={{ paddingLeft: '40px' }}
-                  />
-                </div>
-              </div>
-
-              <div className="form-group-3d">
-                <label className="form-label">{t('mobile_number')} *</label>
-                <div style={{ position: 'relative' }}>
-                  <Phone size={18} style={{ position: 'absolute', left: '12px', top: '12px', color: '#64748b' }} />
-                  <input 
-                    type="tel" 
-                    className="form-input-3d" 
-                    placeholder="+91 94432 10987" 
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    required
-                    style={{ paddingLeft: '40px' }}
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* STEP 2: Password / Security */}
-          {step === 2 && (
-            <div className="animate-fade-in">
-              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '20px', color: '#0f172a' }}>2. Account Security</h2>
-              <p style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '16px' }}>Mobile number verified successfully. Create a password for your account.</p>
-              
-              <div className="form-group-3d">
-                <label className="form-label">{t('create_password')} *</label>
-                <div style={{ position: 'relative' }}>
-                  <Lock size={18} style={{ position: 'absolute', left: '12px', top: '12px', color: '#64748b' }} />
-                  <input 
-                    type="password" 
-                    className="form-input-3d" 
-                    placeholder="••••••••" 
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    style={{ paddingLeft: '40px' }}
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* STEP 3: Language */}
-          {step === 3 && (
-            <div className="animate-fade-in">
-              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '20px', color: '#0f172a' }}>3. {t('select_language')}</h2>
+              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '20px', color: '#0f172a' }}>1. {t('step_language')}</h2>
               
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                 {languages.map(lang => (
@@ -270,10 +207,72 @@ export const Register = ({ onSwitchToLogin }) => {
             </div>
           )}
 
+          {/* STEP 2: Basic Info */}
+          {step === 2 && (
+            <div className="animate-fade-in">
+              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '20px', color: '#0f172a' }}>2. {t('step_basic_info')}</h2>
+              <div className="form-group-3d">
+                <label className="form-label">{t('full_name')} *</label>
+                <div style={{ position: 'relative' }}>
+                  <User size={18} style={{ position: 'absolute', left: '12px', top: '12px', color: '#64748b' }} />
+                  <input 
+                    type="text" 
+                    className="form-input-3d" 
+                    placeholder={t('placeholder_name')} 
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    style={{ paddingLeft: '40px' }}
+                  />
+                </div>
+              </div>
+
+              <div className="form-group-3d">
+                <label className="form-label">{t('mobile_number')} *</label>
+                <div style={{ position: 'relative' }}>
+                  <Phone size={18} style={{ position: 'absolute', left: '12px', top: '12px', color: '#64748b' }} />
+                  <input 
+                    type="tel" 
+                    className="form-input-3d" 
+                    placeholder={t('placeholder_phone')} 
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    required
+                    style={{ paddingLeft: '40px' }}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* STEP 3: Password / Security */}
+          {step === 3 && (
+            <div className="animate-fade-in">
+              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '20px', color: '#0f172a' }}>3. {t('step_security')}</h2>
+              <p style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '16px' }}>{t('mobile_verified')}</p>
+              
+              <div className="form-group-3d">
+                <label className="form-label">{t('create_password')} *</label>
+                <div style={{ position: 'relative' }}>
+                  <Lock size={18} style={{ position: 'absolute', left: '12px', top: '12px', color: '#64748b' }} />
+                  <input 
+                    type="password" 
+                    className="form-input-3d" 
+                    placeholder="••••••••" 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    style={{ paddingLeft: '40px' }}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* STEP 4: Farm Location (State) */}
           {step === 4 && (
             <div className="animate-fade-in">
-              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '20px', color: '#0f172a' }}>4. Farm Location (State)</h2>
+              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '20px', color: '#0f172a' }}>4. {t('step_state')}</h2>
               
               <div style={{ 
                 display: 'grid', 
@@ -323,7 +322,7 @@ export const Register = ({ onSwitchToLogin }) => {
                         </div>
                       )}
                       
-                      <span style={{ fontWeight: 600, color: '#1e293b', textAlign: 'center', fontSize: '0.85rem' }}>{s.state}</span>
+                      <span style={{ fontWeight: 600, color: '#1e293b', textAlign: 'center', fontSize: '0.85rem' }}>{t(s.state) || s.state}</span>
                       
                       {isSelected && (
                         <div style={{ position: 'absolute', top: '6px', right: '6px', backgroundColor: '#16a34a', borderRadius: '50%', padding: '2px', display: 'flex' }}>
@@ -340,7 +339,7 @@ export const Register = ({ onSwitchToLogin }) => {
           {/* STEP 5: District & Land */}
           {step === 5 && (
             <div className="animate-fade-in">
-              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '20px', color: '#0f172a' }}>5. District & Land Details</h2>
+              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '20px', color: '#0f172a' }}>5. {t('step_district')}</h2>
               <div className="grid-2">
                 <div className="form-group-3d">
                   <label className="form-label">{t('district')} *</label>
@@ -352,7 +351,7 @@ export const Register = ({ onSwitchToLogin }) => {
                   >
                     <option value="" disabled>{t('select_district')}</option>
                     {availableDistricts.map(dist => (
-                      <option key={dist} value={dist}>{dist}</option>
+                      <option key={dist} value={dist}>{t(dist) || dist}</option>
                     ))}
                   </select>
                 </div>
@@ -395,10 +394,10 @@ export const Register = ({ onSwitchToLogin }) => {
                         transition: 'all 0.2s'
                       }}
                     >
-                      <img src={imgUrl} alt={st.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <img src={imgUrl} alt={t(st.name) || st.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(transparent, rgba(0,0,0,0.8))' }} />
                       <div style={{ position: 'absolute', bottom: '10px', left: 0, right: 0, textAlign: 'center', color: 'white', fontWeight: 700, fontSize: '0.9rem' }}>
-                        {st.name}
+                        {t(st.name) || st.name}
                       </div>
                       {isSelected && (
                         <div style={{ position: 'absolute', top: '8px', right: '8px', backgroundColor: '#16a34a', borderRadius: '50%', padding: '4px', display: 'flex' }}>
@@ -459,7 +458,7 @@ export const Register = ({ onSwitchToLogin }) => {
                         fontSize: '0.9rem',
                         textAlign: 'center'
                       }}>
-                        {crop}
+                        {t(crop) || crop}
                       </div>
 
                       {isSelected && (
@@ -503,13 +502,13 @@ export const Register = ({ onSwitchToLogin }) => {
 
         {step === 1 && (
           <div style={{ textAlign: 'center', marginTop: '24px', fontSize: '0.85rem', color: '#64748b' }}>
-            Already registered?{' '}
+            {t('already_registered')}{' '}
             <button 
               type="button"
               onClick={onSwitchToLogin}
               style={{ background: 'none', border: 'none', color: '#16a34a', fontWeight: 700, cursor: 'pointer' }}
             >
-              Login Here
+              {t('login_here')}
             </button>
           </div>
         )}
