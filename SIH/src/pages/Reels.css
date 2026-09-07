@@ -37,13 +37,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden; /* Prevent iframe scrollbars from leaking out */
 }
 
 .reel-iframe {
-  width: 100%;
+  width: calc(100% + 40px); /* Stretch iframe wider to push internal scrollbars out of bounds */
   height: 100%;
   border: none;
   background-color: #000;
+  margin-left: -20px; /* Center the stretched iframe */
+  margin-right: -20px;
 }
 
 .reel-overlay-top {
@@ -51,10 +54,10 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 70px; /* Increased to cover header completely */
+  height: 70px;
   background-color: #000;
   z-index: 10;
-  pointer-events: none; /* Let clicks pass through if needed */
+  pointer-events: none;
 }
 
 .reel-overlay-bottom {
@@ -62,30 +65,30 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 220px; /* Drastically increased to fully swallow the View More box and white lines */
+  height: 220px;
   background-color: #000;
   z-index: 10;
   pointer-events: none;
 }
 
-/* Side overlays to hide the 1px white border of the Instagram embed */
+/* Side overlays to hide any remaining internal borders or scrollbars */
 .reel-overlay-left,
 .reel-overlay-right {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 4px;
+  width: 24px; /* Increased massively to swallow the browser scrollbar */
   background-color: #000;
   z-index: 10;
   pointer-events: none;
 }
 
 .reel-overlay-left {
-  left: 0;
+  left: -2px; /* Slight negative margin to avoid white bleed */
 }
 
 .reel-overlay-right {
-  right: 0;
+  right: -2px;
 }
 
 /* Custom Native UI Overlay */
