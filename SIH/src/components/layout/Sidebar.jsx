@@ -33,6 +33,7 @@ export const Sidebar = () => {
     { id: 'disease', label: t('disease_detection'), icon: Bug },
     { id: 'irrigation', label: t('irrigation'), icon: Droplet },
     { id: 'notifications', label: t('notifications'), icon: Bell, count: unreadNotificationsCount },
+    { id: 'schemes', label: t('schemes'), icon: Landmark },
     { id: 'profile', label: t('profile'), icon: User }
   ];
 

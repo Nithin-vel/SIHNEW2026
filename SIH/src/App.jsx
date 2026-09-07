@@ -22,6 +22,7 @@ import { FarmerProfile } from './pages/FarmerProfile';
 import { Settings } from './pages/Settings';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
+import { Reels } from './pages/Reels';
 
 
 // Styles
@@ -66,6 +67,8 @@ const MainAppContent = () => {
         return <MarketIntelligence />;
       case 'profit':
         return <ProfitCalculator />;
+      case 'reels':
+        return <Reels />;
       case 'schemes':
         return <GovernmentSchemes />;
       case 'expert-qa':
@@ -107,7 +110,7 @@ const MainAppContent = () => {
       {/* Main Content Area */}
       <div className="main-wrapper">
         <Header />
-        <main className="page-content">
+        <main className={`page-content ${activePage === 'reels' ? 'reels-page-content' : ''}`}>
           {renderActivePage()}
         </main>
       </div>

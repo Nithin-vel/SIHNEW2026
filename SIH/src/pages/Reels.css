@@ -1,0 +1,44 @@
+.reels-container {
+  width: 100%;
+  height: calc(100vh - 60px); /* 60px is approx mobile nav height */
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  background-color: #000;
+  margin: 0;
+  padding: 0;
+  /* Hide scrollbar for a cleaner look */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.reels-container::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+
+.reel-item {
+  width: 100%;
+  height: 100%; /* Matches parent height */
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #111;
+}
+
+.reel-iframe {
+  width: 100%;
+  max-width: 450px;
+  height: 100%;
+  border: none;
+  background-color: #000;
+}
+
+/* On desktop, make it look like a mobile phone frame in the center */
+@media (min-width: 768px) {
+  .reels-container {
+    height: calc(100vh - 64px); /* Header height */
+  }
+}

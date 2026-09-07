@@ -144,6 +144,12 @@ button, input, select, textarea {
   }
 }
 
+.reels-page-content {
+  padding: 0 !important;
+  max-width: 100% !important;
+  background-color: #000;
+}
+
 /* Reusable Card Styles */
 .farm-card {
   background: #ffffff;

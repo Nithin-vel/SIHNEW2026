@@ -296,7 +296,6 @@ export const AppStateProvider = ({ children }) => {
       markAllAsRead,
       markAsRead,
       unreadNotificationsCount,
-      unreadNotificationsCount,
       weather,
       setWeather,
       notificationsEnabled,

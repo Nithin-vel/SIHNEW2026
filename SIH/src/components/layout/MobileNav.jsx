@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wheat, TrendingUp, Calculator, Landmark, HelpCircle } from 'lucide-react';
+import { Wheat, TrendingUp, Calculator, Clapperboard, HelpCircle } from 'lucide-react';
 import { useAppState } from '../../context/AppStateContext';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -11,7 +11,7 @@ export const MobileNav = () => {
     { id: 'home', label: t('home'), icon: Wheat },
     { id: 'market', label: t('market'), icon: TrendingUp },
     { id: 'profit', label: t('profit'), icon: Calculator },
-    { id: 'schemes', label: t('schemes'), icon: Landmark },
+    { id: 'reels', label: 'Reels', icon: Clapperboard },
     { id: 'expert-qa', label: t('qa'), icon: HelpCircle }
   ];
 
