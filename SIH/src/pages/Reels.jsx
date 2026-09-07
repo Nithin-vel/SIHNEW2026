@@ -11,7 +11,11 @@ export const Reels = () => {
       avatar: 'https://ui-avatars.com/api/?name=Agri+Tech&background=0D8ABC&color=fff',
       likes: 12400,
       isLiked: false,
-      comments: '342'
+      commentsList: [
+        { user: 'farmer_raj', text: 'This irrigation technique saves so much water! Will definitely try it.', time: '2h' },
+        { user: 'kisan_boy', text: 'Where can I buy these sensors?', time: '5h' },
+        { user: 'agri_expert', text: 'Great explanation. Automation is the future.', time: '1d' }
+      ]
     },
     {
       id: 'DaXovpYT6wN',
@@ -19,7 +23,11 @@ export const Reels = () => {
       avatar: 'https://ui-avatars.com/api/?name=Pragathi&background=16A34A&color=fff',
       likes: 8932,
       isLiked: false,
-      comments: '124'
+      commentsList: [
+        { user: 'green_fields', text: 'Organic farming yields are actually impressive if done right.', time: '1h' },
+        { user: 'organic_life', text: 'What natural pesticides do you recommend for pests?', time: '3h' },
+        { user: 'village_farmer', text: 'Very inspiring work! Keep it up.', time: '6h' }
+      ]
     },
     {
       id: 'Da_9K8Dz7VD',
@@ -27,11 +35,18 @@ export const Reels = () => {
       avatar: 'https://ui-avatars.com/api/?name=Kisan&background=F59E0B&color=fff',
       likes: 45100,
       isLiked: false,
-      comments: '1.2K'
+      commentsList: [
+        { user: 'tractor_daily', text: 'That machinery is incredibly efficient.', time: '30m' },
+        { user: 'farm_tech', text: 'Does the government provide subsidies for this equipment?', time: '2h' },
+        { user: 'rural_innovator', text: 'I need this for my 5 acres. Please share contact details.', time: '4h' },
+        { user: 'agri_student', text: 'Perfect demonstration of modern agricultural engineering!', time: '5h' }
+      ]
     }
   ]);
 
   const [resetCounters, setResetCounters] = useState({});
+
+  const [activeCommentsReelId, setActiveCommentsReelId] = useState(null);
 
   useEffect(() => {
     // Ensure Instagram embed script is loaded
@@ -56,6 +71,8 @@ export const Reels = () => {
                 ...prev,
                 [reelId]: (prev[reelId] || 0) + 1
               }));
+              // Also close comments if they scroll away
+              setActiveCommentsReelId(null);
             }
           }
         });
@@ -101,6 +118,8 @@ export const Reels = () => {
     if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
     return num;
   };
+
+  const activeReelData = reelsData.find(r => r.id === activeCommentsReelId);
 
   return (
     <div className="reels-container">
@@ -150,9 +169,9 @@ export const Reels = () => {
                   <Heart size={28} fill={reel.isLiked ? '#ef4444' : 'transparent'} />
                   <span>{formatLikes(reel.likes)}</span>
                 </button>
-                <button className="reel-action-btn" onClick={() => alert('Comments view is currently simulated in this demo.')}>
+                <button className="reel-action-btn" onClick={() => setActiveCommentsReelId(reel.id)}>
                   <MessageCircle size={28} />
-                  <span>{reel.comments}</span>
+                  <span>{reel.commentsList.length}</span>
                 </button>
                 <button className="reel-action-btn" onClick={() => handleShare(reel.id)}>
                   <Send size={28} />
@@ -167,6 +186,32 @@ export const Reels = () => {
           </div>
         </div>
       ))}
+
+      {/* Simulated Comments Bottom Sheet */}
+      <div className={`comments-bottom-sheet ${activeCommentsReelId ? 'open' : ''}`}>
+        <div className="comments-header">
+          <h3>Comments</h3>
+          <button className="close-comments-btn" onClick={() => setActiveCommentsReelId(null)}>×</button>
+        </div>
+        <div className="comments-list">
+          {activeReelData?.commentsList.map((comment, idx) => (
+            <div key={idx} className="comment-item">
+              <img src={`https://ui-avatars.com/api/?name=${comment.user}&background=random`} alt={comment.user} className="comment-avatar" />
+              <div className="comment-content">
+                <span className="comment-username">@{comment.user}</span>
+                <p className="comment-text">{comment.text}</p>
+                <span className="comment-time">{comment.time}</span>
+              </div>
+              <button className="comment-like-btn"><Heart size={14} /></button>
+            </div>
+          ))}
+        </div>
+        <div className="comment-input-area">
+          <input type="text" placeholder="Add a comment..." className="comment-input" />
+          <button className="comment-send-btn"><Send size={18} /></button>
+        </div>
+      </div>
+
     </div>
   );
 };
