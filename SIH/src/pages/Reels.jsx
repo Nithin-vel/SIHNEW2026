@@ -31,7 +31,10 @@ export const Reels = () => {
     }
   ]);
 
+  const [resetCounters, setResetCounters] = useState({});
+
   useEffect(() => {
+    // Ensure Instagram embed script is loaded
     if (!window.instgrm) {
       const script = document.createElement('script');
       script.async = true;
@@ -40,6 +43,31 @@ export const Reels = () => {
     } else {
       window.instgrm.Embeds.process();
     }
+
+    // Set up an observer to detect when a video scrolls out of view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // When a video drops below 20% visibility, reset it to stop the audio
+          if (!entry.isIntersecting) {
+            const reelId = entry.target.getAttribute('data-id');
+            if (reelId) {
+              setResetCounters(prev => ({
+                ...prev,
+                [reelId]: (prev[reelId] || 0) + 1
+              }));
+            }
+          }
+        });
+      },
+      { threshold: 0.2 } // Fire when visibility drops below 20%
+    );
+
+    // Observe all reel items
+    const elements = document.querySelectorAll('.reel-item');
+    elements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
   }, []);
 
   const handleLike = (id) => {
@@ -77,12 +105,13 @@ export const Reels = () => {
   return (
     <div className="reels-container">
       {reelsData.map((reel, index) => (
-        <div key={reel.id} className="reel-item">
+        <div key={reel.id} className="reel-item" data-id={reel.id}>
           <div className="reel-iframe-wrapper">
             {/* Top black overlay to hide Instagram header */}
             <div className="reel-overlay-top"></div>
             
             <iframe 
+              key={`${reel.id}-${resetCounters[reel.id] || 0}`}
               className="reel-iframe"
               src={`https://www.instagram.com/p/${reel.id}/embed/?theme=dark`}
               frameBorder="0"
