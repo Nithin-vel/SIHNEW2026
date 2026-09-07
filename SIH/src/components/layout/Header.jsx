@@ -28,7 +28,7 @@ export const Header = () => {
         </button>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div className="greeting-text" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <img src="/logo.png" alt="Farmogram Logo" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Farmogram Logo" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
             <span style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0f172a' }}>Farmogram</span>
           </div>
         </div>

@@ -42,7 +42,7 @@ export const Sidebar = () => {
       <div className="sidebar-brand">
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
           <div className="brand-logo-icon" style={{ background: 'transparent', boxShadow: 'none' }}>
-            <img src="/logo.png" alt="Farmogram Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Farmogram Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
           </div>
           <div className="brand-text-block">
             <div className="brand-name">

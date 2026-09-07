@@ -150,7 +150,7 @@ export const Register = ({ onSwitchToLogin }) => {
       <div className="auth-card-3d" style={{ maxWidth: '600px', width: '100%' }}>
         <div style={{ textAlign: 'center', marginBottom: '24px' }}>
           <div className="brand-logo-3d">
-            <img src="/logo.png" alt="Farmogram Logo" />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Farmogram Logo" />
           </div>
           <h1 className="brand-title-3d">
             {t('farmer_onboarding')}
