@@ -23,6 +23,8 @@ import { AdminDashboard } from './pages/AdminDashboard';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 
+import { FarmingChatbot } from './components/chatbot/FarmingChatbot';
+
 // Styles
 import './index.css';
 import './components/layout/layout.css';
@@ -98,6 +100,9 @@ const MainAppContent = () => {
 
       {/* Mobile Navigation Bottom Bar */}
       <MobileNav />
+
+      {/* AI Farming Chatbot Floating Widget */}
+      <FarmingChatbot />
     </div>
   );
 };
